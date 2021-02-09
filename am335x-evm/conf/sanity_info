@@ -1,0 +1,4 @@
+SANITY_VERSION 1
+TMPDIR /opt/git_workspace/yocto-ti-TMDSICE3359/am335x-evm/build/arago-tmp-external-arm-toolchain
+SSTATE_DIR /opt/git_workspace/yocto-ti-TMDSICE3359/am335x-evm/build/sstate-cache
+NATIVELSBSTRING ubuntu-18.04
