@@ -27,5 +27,5 @@ cp ../sources/meta-custom/conf/layer.conf ../../tisdk/sources/meta-custom/conf
 cp ../sources/meta-custom/recipes-core/images/custom-base-image.bb ../../tisdk/sources/meta-custom/recipes-core/images
 MACHINE=am335x-evm bitbake custom-base-image
 cd ../.. && if [ -d "artifacts" ]; then rm -rf artifacts; fi && mkdir -p artifacts
-cp tisdk/build/arago-tmp-external-arm-toolchain/deploy/images/am335x-evm/* artifacts
+cp am335x-evm/build/arago-tmp-external-arm-toolchain/deploy/images/am335x-evm/* artifacts
 */
