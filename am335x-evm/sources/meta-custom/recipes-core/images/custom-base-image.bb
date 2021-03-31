@@ -7,5 +7,6 @@ export IMAGE_BASENAME = "custom-base-image"
 # Add any packages or packagegroups that we want added to our filesystem
 IMAGE_INSTALL += "\
     hello-world \
+    uart1-app \
     "
 
