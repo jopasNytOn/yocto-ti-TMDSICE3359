@@ -27,5 +27,16 @@ cp ../sources/meta-custom/conf/layer.conf ../../tisdk/sources/meta-custom/conf
 cp ../sources/meta-custom/recipes-core/images/custom-base-image.bb ../../tisdk/sources/meta-custom/recipes-core/images
 MACHINE=am335x-evm bitbake custom-base-image
 cd ../.. && if [ -d "artifacts" ]; then rm -rf artifacts; fi && mkdir -p artifacts
-cp am335x-evm/build/arago-tmp-external-arm-toolchain/deploy/images/am335x-evm/* artifacts
+cp am335x-evm/build/arago-tmp-external-arm-toolchain/deploy/images/am335x-evm/MLO artifacts
+cp am335x-evm/build/arago-tmp-external-arm-toolchain/deploy/images/am335x-evm/u-boot.img artifacts
+cp am335x-evm/build/arago-tmp-external-arm-toolchain/deploy/images/am335x-evm/custom-base-image-am335x-evm.tar.xz artifacts
+cd artifacts
+unxz custom-base-image-am335x-evm.tar.xz
+tar --wildcards --delete ./boot/*.dtb -f custom-base-image-am335x-evm.tar
+mkdir boot
+cp ../sources/meta-jopasnyton/dtb-dts/am335x-icev2-prueth.dtb boot/
+tar -r ./boot/am335x-icev2-prueth.dtb -f custom-base-image-am335x-evm.tar
+xz -z custom-base-image-am335x-evm.tar
+rm -rf boot
+cd ..
 */
