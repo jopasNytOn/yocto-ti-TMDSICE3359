@@ -14,7 +14,7 @@
 #include "am335x-icev2-common.dtsi"
 
 / {
-	model = "TI AM3359 ICE-V2 - dual PRUETH - jopasNytOn UART1 trial 1 ";
+	model = "TI AM3359 ICE-V2 - dual PRUETH - jopasNytOn UART1 trial 2 ";
 	compatible = "ti,am3359-icev2", "ti,am33xx";
 
 	aliases {
