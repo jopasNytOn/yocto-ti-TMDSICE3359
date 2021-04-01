@@ -63,21 +63,28 @@ void set_blocking(int fd, int should_block)
 }
 
 int main(void) {
-    char *portname = "/dev/ttyS1";
+    char *portname = "/dev/ttyUSB2";
     int fd = open(portname, O_RDWR | O_NOCTTY | O_SYNC);
 
-    printf("uart1-app v0.02\n");
+    printf("uart1-app v0.03\n");
     if (fd < 0)
     {
         printf("error %d opening %s: %s", errno, portname, strerror(errno));
-        return;
+        return -1;
     }
 
     set_interface_attribs(fd, B9600, 0);
     set_blocking(fd, 0);
-    write(fd, "hello!\n", 7);
 
-    sleep(3);
+    sleep(20);
+
+    char buf [100];
+    int n = read (fd, buf, sizeof buf);
+    printf("received %d bytes: ", n);
+    for (int i = 0; i < n; i++)
+        printf("%X ", buf[i]);
+    printf("\n");
+
     close(fd);
 
     return 0;
