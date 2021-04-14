@@ -1,1 +1,8 @@
+artifacts
 bin
+downloads
+
+**/bitbake-cookerdaemon.log
+**/bitbake.lock
+**/build
+**/cache
