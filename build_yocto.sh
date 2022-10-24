@@ -9,10 +9,11 @@ if [ -d "bin/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu" ]; then echo "gcc-arm
 export TOOLCHAIN_PATH_ARMV7=$PWD/bin/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
 export TOOLCHAIN_PATH_ARMV8=$PWD/bin/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
 
-if [ -d "tisdk" ]; then git -C tisdk checkout master; git -C tisdk pull; else git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk; fi && git -C tisdk rev-parse --short HEAD
+if [ -d "tisdk" ]; then git -C tisdk checkout master; git -C tisdk pull; else git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk; fi && git -C tisdk rev-parse --short HEAD
+cp am335x-evm/sources/processor-sdk-06.03.00.106-config.txt tisdk/configs/processor-sdk/
 cd tisdk && ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-06.03.00.106-config.txt
 
-cd sources && if [ -d "meta-custom" ]; then git -C meta-custom/ checkout .; else git clone git://git.ti.com/sitara-linux/meta-custom.git -b proc-sdk-linux; fi && git -C meta-custom/ checkout Lab3-2018-04
+cd sources && if [ -d "meta-custom" ]; then git -C meta-custom/ checkout .; else git clone https://git.ti.com/git/sitara-linux/meta-custom.git -b proc-sdk-linux; fi && git -C meta-custom/ checkout Lab3-2018-04
 
 cd ../.. && mkdir -p am335x-evm/build && cd am335x-evm/build && . ../conf/setenv
 
