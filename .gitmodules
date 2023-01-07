@@ -1,0 +1,3 @@
+[submodule "tisdk"]
+	path = tisdk
+	url = ./tisdk/
